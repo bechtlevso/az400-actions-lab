@@ -1,0 +1,17 @@
+name: Part A - parallel by default
+on: workflow_dispatch
+
+jobs:
+  job-one:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job One starting at $(date +%T)"
+      - run: sleep 30
+      - run: echo "Job One done at $(date +%T)"
+
+  job-two:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job Two starting at $(date +%T)"
+      - run: sleep 30
+      - run: echo "Job Two done at $(date +%T)"
