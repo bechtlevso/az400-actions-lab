@@ -1,0 +1,23 @@
+name: Part D - manual with inputs
+on:
+  workflow_dispatch:
+    inputs:
+      targetGroup:
+        description: 'Which server group to patch'
+        required: true
+        default: 'main_servers'
+        type: choice
+        options:
+          - main_servers
+          - dmz_servers
+      dryRun:
+        description: 'Dry run only'
+        type: boolean
+        default: true
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Target: ${{ inputs.targetGroup }}"
+      - run: echo "Dry run: ${{ inputs.dryRun }}"
