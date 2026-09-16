@@ -19,5 +19,7 @@ jobs:
   patch:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Target: ${{ inputs.targetGroup }}"
-      - run: echo "Dry run: ${{ inputs.dryRun }}"
+      - run: |
+          echo "Target: ${{ inputs.targetGroup }}"
+      - run: |
+          echo "Dry run: ${{ inputs.dryRun }}"
