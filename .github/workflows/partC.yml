@@ -1,0 +1,17 @@
+name: Part C - broken handoff
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "compiled-output-v1" > app.txt
+      - run: echo "BUILD_FILE=app.txt" >> $GITHUB_ENV
+      - run: cat app.txt
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: cat app.txt        # <-- will FAIL
+      - run: echo "BUILD_FILE was $BUILD_FILE"   # <-- will be EMPTY
