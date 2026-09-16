@@ -1,0 +1,15 @@
+name: Part B - needs
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Building at $(date +%T)"
+      - run: sleep 20
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build          # <-- the only difference from Part A
+    steps:
+      - run: echo "Deploying at $(date +%T)"
